@@ -50,9 +50,14 @@ dotnet run
 
 ## Ekran Görüntüleri
 
-<img src="1.png" width="700">
-<img src="2.png" width="700">
-<img src="3.png" width="700">
-<img src="4.png" width="700">
-<img src="5.png" width="700">
-<img src="6.png" width="700">
+![1](1.png)
+
+![2](2.png)
+
+![3](3.png)
+
+![4](4.png)
+
+![5](5.png)
+
+![6](6.png)
