@@ -1,0 +1,153 @@
+﻿@model SiparisTakipSistemi.Models.Kullanicilar
+
+@{
+    ViewData["Title"] = "Kayıt Ol";
+}
+
+<style>
+    body {
+        background-color: #a9746e;
+    }
+
+    .register-wrapper {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .register-card-horizontal {
+        display: flex;
+        flex-direction: row;
+        background-color: #fff;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        width: 800px;
+        max-width: 95%;
+    }
+
+    .register-left {
+        background-color: #f8f9fa;
+        padding: 30px 20px;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .register-heading {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+        .register-heading .line1,
+        .register-heading .line2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #5a3e36;
+            display: block;
+            margin: 0;
+        }
+
+    .register-left img {
+        width: 80px;
+        height: auto;
+        margin-top: 35px;
+    }
+
+    .register-right {
+        padding: 40px 30px;
+        width: 60%;
+        background-color: white;
+    }
+
+        .register-right .form-control {
+            border-radius: 8px;
+        }
+
+    .custom-login-btn {
+        color: #5a3e36;
+        border-color: #8c5e4a;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+        .custom-login-btn:hover {
+            background-color: #e8cfc4;
+            color: #5a3e36;
+            border-color: #8c5e4a;
+            text-decoration: none;
+        }
+
+    .custom-login-text {
+        color: #5a3e36;
+        font-weight: 500;
+    }
+</style>
+
+<div class="register-wrapper">
+    <div class="register-card-horizontal">
+        <!-- Sol taraf: Başlık ve Logo -->
+        <div class="register-left">
+            <div class="register-heading">
+                <span class="line1">Sipariş Takip</span>
+                <span class="line2">Sistemi</span>
+            </div>
+            <img src="~/template/img/order-tracking.png" alt="Logo" />
+        </div>
+
+        <!-- Sağ taraf: Kayıt formu -->
+        <div class="register-right">
+            @if (TempData["Basarili"] != null)
+            {
+                <div class="alert alert-success">@TempData["Basarili"]</div>
+            }
+
+            @if (ViewBag.Hata != null)
+            {
+                <div class="alert alert-danger">@ViewBag.Hata</div>
+            }
+
+            <form asp-action="Kayit" method="post">
+                <div asp-validation-summary="All" class="text-danger mb-2"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="KullaniciAdi" class="fw-bold">Kullanıcı Adı</label>
+                    <input asp-for="KullaniciAdi" class="form-control" />
+                    <span asp-validation-for="KullaniciAdi" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Sifre" class="fw-bold">Şifre</label>
+                    <input asp-for="Sifre" type="password" class="form-control" />
+                    <span asp-validation-for="Sifre" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Eposta" class="fw-bold">E-posta</label>
+                    <input asp-for="Eposta" type="email" class="form-control" />
+                    <span asp-validation-for="Eposta" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 mt-2 fw-semibold">
+                    <i class="fas fa-user-check me-1"></i> Kayıt Ol
+                </button>
+            </form>
+
+            <!-- Giriş Yap butonu -->
+            <p class="text-center mt-4">
+                <span class="custom-login-text me-2">Zaten hesabınız var mı?</span>
+                <a asp-action="Giris" class="btn btn-sm rounded-pill custom-login-btn">
+                    Giriş Yap
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

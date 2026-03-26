@@ -1,0 +1,71 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    background-color: #f3e8e2; /* Açýk pastel kahverengi */
+    color: #3d2b1f; /* Koyu kahverengi metin rengi */
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Sayfa düzeni */
+#wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Odak efekti (form, buton, input vs) */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #8c5e4a;
+}
+
+/* Kartlar, formlar ve kutular için arkaplan uyumu */
+.card,
+.form-control,
+.navbar,
+footer {
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+/* Navbar baþlýðý */
+.navbar-brand {
+    color: #5a3e36 !important;
+    font-weight: bold;
+}
+
+/* Butonlar için kahverengi tonlarý */
+.btn-primary {
+    background-color: #8c5e4a;
+    border-color: #8c5e4a;
+}
+
+    .btn-primary:hover {
+        background-color: #6f4638;
+        border-color: #6f4638;
+    }
+
+/* Footer */
+footer {
+    background-color: #8c5e4a;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}

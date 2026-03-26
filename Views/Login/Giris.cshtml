@@ -1,0 +1,165 @@
+﻿@{
+    ViewData["Title"] = "Giriş Yap";
+}
+
+<style>
+    body {
+        background-color: #a9746e;
+    }
+
+    .login-wrapper {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-card-horizontal {
+        display: flex;
+        flex-direction: row;
+        background-color: #fff;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        width: 800px;
+        max-width: 95%;
+    }
+
+    .login-left {
+        background-color: #f8f9fa;
+        padding: 30px 20px;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .login-heading {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+        .login-heading .line1,
+        .login-heading .line2 {
+            font-size: 2.2rem;
+            font-weight: 700; /* Orta kalınlık */
+            color: #5a3e36; /* Uyumlu kahverengimsi bir ton */
+           
+            display: block;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+
+
+    .login-left img {
+        width: 80px;
+        height: auto;
+        margin-top: 35px; /* 👈 Logonun yukarıdan boşluğu */
+    }
+
+    .login-right {
+        padding: 40px 30px;
+        width: 60%;
+        background-color: white;
+    }
+
+        .login-right .form-control {
+            border-radius: 8px;
+        }
+
+    /* Giriş yap butonu kahverengi olacak şekilde */
+    .btn-primary {
+        background-color: #8c5e4a;
+        border-color: #8c5e4a;
+    }
+
+        .btn-primary:hover {
+            background-color: #6f4638;
+            border-color: #6f4638;
+        }
+
+        /* Tıklanıldığında (active) ve odaklanıldığında (focus) da kahverengimsi kalır */
+        .btn-primary:focus,
+        .btn-primary:active,
+        .btn-primary:active:focus,
+        .btn-primary:focus-visible {
+            background-color: #a97963 !important; /* Daha açık kahverengi */
+            border-color: #a97963 !important;
+            box-shadow: 0 0 0 0.25rem rgba(167, 121, 99, 0.5);
+            outline: none;
+        }
+
+    .custom-register-btn {
+        color: #5a3e36;
+        border-color: #8c5e4a;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+        .custom-register-btn:hover {
+            background-color: #e8cfc4; /* Açık kahve hover rengi */
+            color: #5a3e36;
+            border-color: #8c5e4a;
+            text-decoration: none;
+        }
+
+    .custom-register-text {
+        color: #5a3e36;
+        font-weight: 500;
+    }
+
+</style>
+
+<div class="login-wrapper">
+    <div class="login-card-horizontal">
+        <!-- Sol taraf: Başlık ve Logo -->
+        <div class="login-left">
+            <div class="login-heading">
+                <span class="line1">Sipariş Takip</span><br />
+                <span class="line2">Sistemi</span>
+            </div>
+            <img src="~/template/img/order-tracking.png" alt="Logo" />
+        </div>
+
+        <!-- Sağ taraf: Giriş formu -->
+        <div class="login-right">
+            @if (ViewBag.Basarili != null)
+            {
+                <div class="alert alert-success">@ViewBag.Basarili</div>
+            }
+            @if (ViewBag.Hata != null)
+            {
+                <div class="alert alert-danger">@ViewBag.Hata</div>
+            }
+
+            <form asp-action="Giris" method="post">
+                <div class="form-group mb-3">
+                    <label for="kullaniciAdi" class="fw-bold">Kullanıcı Adı</label>
+                    <input name="kullaniciAdi" class="form-control" required />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="sifre" class="fw-bold">Şifre</label>
+                    <input name="sifre" type="password" class="form-control" required />
+                </div>
+
+               
+
+                <button type="submit" class="btn btn-primary w-100 mt-2">
+                    <i class="fas fa-sign-in-alt me-1"></i> Giriş Yap
+                </button>
+            </form>
+
+            <p class="text-center mt-4">
+                <span class="custom-register-text me-2">Hesabınız yok mu?</span>
+                <a asp-action="Kayit" class="btn btn-sm rounded-pill custom-register-btn">
+                    Kayıt Ol
+                </a>
+            </p>
+
+        </div>
+    </div>
+</div>

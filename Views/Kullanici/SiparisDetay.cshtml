@@ -1,0 +1,55 @@
+﻿@model List<SiparisTakipSistemi.Models.SiparisDetaylari>
+@{
+    ViewData["Title"] = "Sipariş Detayı";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">
+                <i class="fas fa-receipt me-2"></i> Sipariş #@ViewBag.SiparisID Detayları
+            </h5>
+        </div>
+
+        <div class="card-body">
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-1"></i> Bu siparişe ait ürün detayı bulunmamaktadır.
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th><i class="fas fa-cube me-1 text-secondary"></i> Ürün Adı</th>
+                                <th><i class="fas fa-chart-bar me-1 text-secondary"></i> Adet</th>
+                                <th><i class="fas fa-tag me-1 text-secondary"></i> Birim Fiyat</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var urun in Model)
+                            {
+                                <tr>
+                                    <td><i class="fas fa-arrow-right me-1 text-muted"></i> @urun.UrunAdi</td>
+                                    <td>@urun.Adet</td>
+                                    <td>@urun.BirimFiyat.ToString("C2", new System.Globalization.CultureInfo("tr-TR"))</td>
+                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+
+            <a asp-action="Index" class="btn btn-secondary mt-3">
+                <i class="fas fa-arrow-left me-1"></i> Geri
+            </a>
+        </div>
+    </div>
+
+</div>

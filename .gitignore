@@ -1,0 +1,10 @@
+﻿.vs/
+bin/
+obj/
+.config/
+*.user
+*.suo
+*.bak
+*.mdf
+*.ldf
+appsettings.Development.json

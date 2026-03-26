@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SiparisTakipSistemi</title>
+    <link rel="icon" type="image/png" href="~/template/img/icons8-box-50.png" />
+
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+    <!-- SB Admin 2 Styles -->
+    <link href="~/template/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="~/template/css/sb-admin-2.min.css" rel="stylesheet" />
+
+    <!-- Kendi stil dosyan -->
+    <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
+
+    <!-- Genel düzen stil -->
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        #content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer {
+            background-color: #e8cfc4; /* Açık kahverengi */
+            color: #3d2b1f; /* Koyu yazı rengi */
+            text-align: center;
+            padding: 1rem 0;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                        Sipariş Takip Sistemi
+                    </a>
+                </nav>
+                <!-- End of Topbar -->
+                <!-- Page Content -->
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+                <!-- End of Page Content -->
+
+            </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            <footer>
+                <span>© 2025 SiparisTakipSistemi | Tüm hakları saklıdır.</span>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+    <!-- Scripts -->
+    <script src="~/template/vendor/jquery/jquery.min.js"></script>
+    <script src="~/template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/template/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/template/js/sb-admin-2.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+﻿@model SiparisTakipSistemi.Models.Kullanicilar
+
+@{
+    ViewData["Title"] = "Yeni Kullanıcı Ekle";
+}
+
+
+<div class="container mt-5 mb-5">
+    <div class="card shadow p-4">
+        
+        <h3 class="text-primary mb-4">
+            <i class="fas fa-user-plus me-2"></i> Yeni Kullanıcı Ekle
+        </h3>
+
+        @if (TempData["Basarili"] != null)
+        {
+            <div class="alert alert-success">@TempData["Basarili"]</div>
+        }
+
+        @if (ViewBag.Hata != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Hata</div>
+        }
+
+        <form asp-action="KullaniciEkle" method="post">
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="KullaniciAdi" class="form-label fw-bold"></label>
+                <input asp-for="KullaniciAdi" class="form-control" />
+                <span asp-validation-for="KullaniciAdi" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Sifre" class="form-label fw-bold"></label>
+                <input asp-for="Sifre" type="password" class="form-control" />
+                <span asp-validation-for="Sifre" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Eposta" class="form-label fw-bold"></label>
+                <input asp-for="Eposta" type="email" class="form-control" />
+                <span asp-validation-for="Eposta" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Rol" class="form-label fw-bold">Rol</label>
+                <select asp-for="Rol" class="form-select">
+                    <option value="Kullanıcı">Kullanıcı</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                <span asp-validation-for="Rol" class="text-danger"></span>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-success btn-sm w-100">Kaydet</button>
+                </div>
+                <div class="col-md-3">
+                    <a asp-action="Kullanicilar" class="btn btn-secondary btn-sm w-100">İptal</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

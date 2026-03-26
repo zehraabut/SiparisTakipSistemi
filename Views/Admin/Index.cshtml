@@ -1,0 +1,78 @@
+﻿@using Newtonsoft.Json
+@{
+    ViewData["Title"] = "Yönetim Paneli";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="text-primary font-weight-bold">Yönetim Paneli</h2>
+        <p class="text-muted">Yalnızca yöneticilerin erişebileceği yönetim araçları</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <!-- Kullanıcı İşlemleri -->
+        <div class="col-md-5 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary">
+                        <i class="fas fa-users me-2"></i> Kullanıcı İşlemleri
+                    </h5>
+                    <p class="card-text">Kullanıcıları görüntüle ve düzenle</p>
+                    <a class="btn btn-outline-primary mb-2" asp-action="Kullanicilar" asp-controller="Admin">Kullanıcıları Gör</a><br />
+                    <a class="btn btn-outline-info" asp-action="KullaniciEkle" asp-controller="Admin">Yeni Kullanıcı Ekle</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sipariş İşlemleri -->
+        <div class="col-md-5 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-success">
+                        <i class="fas fa-box-open"></i> Sipariş İşlemleri
+                    </h5>
+                    <p class="card-text">Tüm siparişleri yönet</p>
+                    <a class="btn btn-outline-success" asp-action="Siparisler" asp-controller="Admin">Tüm Siparişleri Gör</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kargo Yönetimi -->
+        <div class="col-md-5 mb-4">
+            <div class="card border-left-dark shadow h-100 py-2">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">
+                        <i class="fas fa-truck"></i> Kargo Yönetimi
+                    </h5>
+                    <p class="card-text">Kargo bilgilerini görüntüle ve güncelle</p>
+                    <a class="btn btn-outline-dark" asp-action="Kargolar" asp-controller="Admin">Kargoları Yönet</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sipariş Raporları -->
+        <div class="col-md-5 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2" style="border-left-color: #ff7f50 !important;">
+                <div class="card-body text-center">
+                    <h5 class="card-title" style="color:darkorange;">
+                        <i class="fas fa-chart-line"></i> Sipariş Raporları
+                    </h5>
+                    <p class="card-text">Excel ve PDF formatında rapor indir</p>
+
+                    
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-outline-success me-3" asp-action="SiparisleriExcelIndir" asp-controller="Admin">
+                            <i class="fas fa-file-excel"></i> Excel İndir
+                        </a>
+                        <a class="btn btn-outline-danger" asp-action="SiparisleriPdfIndir" asp-controller="Admin">
+                            <i class="fas fa-file-pdf"></i> PDF İndir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
